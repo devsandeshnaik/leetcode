@@ -1,3 +1,3 @@
-abc & pqr : apbqcr
-ab & pqrs : apbqrs
-abcd & pq : apbqcd
+1
+0
+1
