@@ -48,10 +48,39 @@ vector<int> applyOperations(vector<int> &nums)
     return nums;
 }
 
+// Single for loop approach
+vector<int> applyOperations2(vector<int> &nums)
+{
+    // running operations
+    vector<int> res(nums.size(), 0);
+    int nonZeroIndex = 0;
+
+    for (int i = 0; i < nums.size() - 1; i++)
+    {
+        if (nums[i] == nums[i + 1])
+        {
+            nums[i] *= 2;
+            nums[i + 1] = 0;
+        }
+        if (nums[i] > 0)
+        {
+            res[nonZeroIndex++] = nums[i];
+        }
+        // Since we are iterating till n-1 we need to make sure last value is evaluated as well.
+        if ((i == nums.size() - 2) && (nums[i + 1] > 0))
+        {
+            res[nonZeroIndex++] = nums[i + 1];
+        }
+    }
+
+    return res;
+}
+
 int main()
 {
     vector<int> vec1 = {1, 2, 2, 1, 1, 0};
-    vector<int> result = applyOperations(vec1);
+    vector<int> vec2 = {0, 1};
+    vector<int> result = applyOperations2(vec2);
     cout << "Size : " << result.size() << endl;
     for (int i = 0; i < result.size(); i++)
     {
